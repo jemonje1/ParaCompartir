@@ -1,0 +1,9 @@
+﻿  Prestamo.cpp
+  PrestamoHipotecario.cpp
+  PrestamoPersonal.cpp
+C:\Users\javu2\source\repos\Proyecto1\Proyecto1\PrestamoHipotecario.cpp(20,36): error C4996: 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\javu2\source\repos\Proyecto1\Proyecto1\PrestamoPersonal.cpp(20,36): error C4996: 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  PrestamosAutomoviles.cpp
+C:\Users\javu2\source\repos\Proyecto1\Proyecto1\PrestamosAutomoviles.cpp(23,36): error C4996: 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Proyecto1.cpp
+  Generando código...
