@@ -1,14 +1,14 @@
-//Universidad Rafael Landívar - Programacion Avanzada - Proyecto 02 -  Serpientes y Escaleras - Javier Monje
+//Universidad Rafael LandÃ­var - Programacion Avanzada - Proyecto 02 -  Serpientes y Escaleras - Javier Monje
 
 //Los comentarios son la documentacion interna del proyecto
 
 //librerias y directiva a utilizar, el uso de cada una se justifica en el documento escrito adjunto
 
-/*Para evitar problemas en el proyecto enviado, se comentaron las funciones relacionadas a la música del juego para su correcta
-compilación y ejecución, estas funcionalidades en la música serán exclusivas para mostrar en la presentación del proyecto,
-cabe destacar que la lógica del juego se mantiene totalmente igual*/
+/*Para evitar problemas en el proyecto enviado, se comentaron las funciones relacionadas a la mÃºsica del juego para su correcta
+compilaciÃ³n y ejecuciÃ³n, estas funcionalidades en la mÃºsica serÃ¡n exclusivas para mostrar en la presentaciÃ³n del proyecto,
+cabe destacar que la lÃ³gica del juego se mantiene totalmente igual*/
 
-#pragma comment(lib, "winmm.lib")
+//#pragma comment(lib, "winmm.lib")
 #include <iostream> 
 #include <sstream>
 #include <random>
@@ -16,8 +16,8 @@ cabe destacar que la lógica del juego se mantiene totalmente igual*/
 #include <stdlib.h>
 #include <thread>
 #include <chrono>
-#include <Windows.h>
-#include <MMsystem.h>
+//#include <Windows.h>
+//#include <MMsystem.h>
 //Clases creadas
 #include "Jugador.h" 
 #include "Casilla.h"
@@ -83,7 +83,7 @@ int main()
         switch (opciones)
         {
         case 1:
-            PlaySound(NULL, NULL, 0); //Apaga la musica que este sonando
+            //PlaySound(NULL, NULL, 0); //Apaga la musica que este sonando
             cout << "Cargando\n" << endl;
             cout << ".";
             this_thread::sleep_for(chrono::seconds(2));
@@ -231,7 +231,7 @@ void juego(Tablero tablero) { //funcion con la logica del juego
     int turno = 1;
     int index = 0; //se inicia el indice en 0 para apuntar al primer jugador
     bool partida = true; //variable para mantener la partida hasta que alguien gane
-    PlaySound(NULL, NULL, 0);
+    //PlaySound(NULL, NULL, 0);
     cout << "Preparando a los jugadores\n" << endl;
     cout << ".";
     this_thread::sleep_for(chrono::seconds(2));
@@ -240,7 +240,7 @@ void juego(Tablero tablero) { //funcion con la logica del juego
     cout << ".\n" << endl;
     cout << CYAN<< "Carga completa\n\n" << RESET<<endl;
     tiempo();
-    PlaySound(TEXT("C:\\Users\\javu2\\Downloads\\sugary-spire-ost-2nd-lap-theme.wav"), NULL, SND_ASYNC | SND_LOOP); //Más música
+   //PlaySound(TEXT("C:\\Users\\javu2\\Downloads\\sugary-spire-ost-2nd-lap-theme.wav"), NULL, SND_ASYNC | SND_LOOP); //MÃ¡s mÃºsica
     cout << "Jugadores en el inicio" << endl;
     tiempo();
     cout << "." << endl;
@@ -292,7 +292,7 @@ void juego(Tablero tablero) { //funcion con la logica del juego
                 tiempo();
                 cout << "Sacaste un " << lanzarDado << endl;
                 if (nuevaPos == tablero.getNumeroCasillas()) { //Condicion que obtiene al ganador si este cae en la ultima casilla
-                    PlaySound(NULL, NULL, 0);
+                    //PlaySound(NULL, NULL, 0);
                     cout << BRIGHT_RED << ":O, algo ha pasado" << RESET << endl;
                     tiempoDos();
                     cout << "." << endl;
@@ -301,7 +301,7 @@ void juego(Tablero tablero) { //funcion con la logica del juego
                     tiempo();
                     cout << "." << endl;
                     tiempoDos();
-                    PlaySound(TEXT("C:\\Users\\javu2\\Downloads\\httpswwwyoutubecomwatchvfys93ke6zc.wav"), NULL, SND_ASYNC | SND_LOOP);
+                    //PlaySound(TEXT("C:\\Users\\javu2\\Downloads\\httpswwwyoutubecomwatchvfys93ke6zc.wav"), NULL, SND_ASYNC | SND_LOOP);
                     tiempo();
                     cout << BRIGHT_CYAN << "Felicidades! " << RESET;
                     for (char c : jugadorActual.getNombre()) {
@@ -327,7 +327,7 @@ void juego(Tablero tablero) { //funcion con la logica del juego
                     this_thread::sleep_for(chrono::seconds(1));
                     cout << ".\n" << endl;
                     cout << CYAN << "Guardado completado\n\n" << RESET << endl;
-                    PlaySound(NULL, NULL, 0);
+                    //PlaySound(NULL, NULL, 0);
                     tablero.vaciarTablero();
                     partida = false; //Finalizacion del turno y de la partida
                     turnoActivo = false;
@@ -444,7 +444,7 @@ void mostrarPos(Tablero tablero, Jugador jugador) { //Logica que muestra la matr
 };
 
 void bienvenida() { //Funcion con una breve animacion al inicio y coloca la musica
-    PlaySound(TEXT("C:\\Users\\javu2\\Downloads\\01-prologue.wav"), NULL, SND_ASYNC | SND_LOOP);
+    //PlaySound(TEXT("C:\\Users\\javu2\\Downloads\\01-prologue.wav"), NULL, SND_ASYNC | SND_LOOP);
     tiempo();
     tiempo();
     tiempo();
@@ -480,7 +480,7 @@ void caerCasilla(Tablero& tablero, Jugador& jugador) { //Logica si se cae a una 
                 tiempo();
                 tiempo();
                 tiempo();
-                caerCasilla(tablero, jugador); //Recursion para evaluar si la serpiente llevó a alguna otra casilla especial
+                caerCasilla(tablero, jugador); //Recursion para evaluar si la serpiente llevÃ³ a alguna otra casilla especial
             }
             if (tablero.getTablero()[i][j].getTipo() == 1 && jugador.getPos() == tablero.getTablero()[i][j].getnumeroCasilla()) {
                 jugador.setPos(tablero.getTablero()[i][j].getFin());
@@ -489,7 +489,7 @@ void caerCasilla(Tablero& tablero, Jugador& jugador) { //Logica si se cae a una 
                 tiempo();
                 tiempo();
                 tiempo();
-                caerCasilla(tablero, jugador);//Recursion para evaluar si la escalera llevó a alguna otra casilla especial
+                caerCasilla(tablero, jugador);//Recursion para evaluar si la escalera llevÃ³ a alguna otra casilla especial
             }
             else {
                 cout << "";//Mantiene al jugador en la posicion que esta si  se encuentra en una casilla normal
