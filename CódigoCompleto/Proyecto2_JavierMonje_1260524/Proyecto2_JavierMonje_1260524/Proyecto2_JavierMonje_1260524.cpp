@@ -92,7 +92,7 @@ int main()
             cout << ".\n" << endl;
             cout << CYAN<< "Carga completa\n\n" <<RESET<< endl;
             //Llamada a un archivo de musica
-            PlaySound(TEXT("C:\\Users\\javu2\\Downloads\\plants-vs-zombies-2.wav"), NULL, SND_ASYNC | SND_LOOP); 
+            //PlaySound(TEXT("C:\\Users\\javu2\\Downloads\\plants-vs-zombies-2.wav"), NULL, SND_ASYNC | SND_LOOP); 
             cout << CYAN << "-_-_-_-_-_-_-_-_-_-_- Configuracion inicial -_-_-_-_-_-_-_-_-_-_-" <<RESET<< endl;
             solicitudJugadores();
             cout << CYAN << "-_-_-_-_-_-_-_-_-_-_- Configuracion de tablero -_-_-_-_-_-_-_-_-_-_-" << RESET<<endl;
