@@ -1,0 +1,143 @@
+INORDER
+
+class Solution {
+   public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new LinkedList<>();
+        if(root==null)
+            return result;
+        
+        traversal(root, result);
+        return result;
+    }
+
+    public void traversal(TreeNode root, List<Integer> result){
+        Stack<TreeNode> stack = new Stack();
+        TreeNode node = root;
+        boolean loop = true;
+        while(loop){
+            if(node!=null){
+                stack.push(node);
+                node = node.left;
+            }
+            else{
+                if(stack.isEmpty()){
+                    break;
+                }
+                node = stack.pop();
+                result.add(node.val);
+                node = node.right;
+            }
+        }    
+        
+    }
+}
+
+POSTORDER
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new LinkedList<>();
+        if(root==null)
+            return result;
+        
+        traversal(root, result);
+        return result;
+    }
+
+    public void traversal(TreeNode root, List<Integer> result){
+        Stack<TreeNode> stack = new Stack();
+        Stack<TreeNode> resultStack = new Stack();
+        stack.push(root);
+
+        while(!stack.isEmpty()){
+            TreeNode node = stack.pop();
+            if(node!=null){
+                stack.push(node.left);
+                stack.push(node.right);
+                resultStack.push(node);
+            }
+        }
+
+        while(!resultStack.isEmpty()){
+            result.add(resultStack.pop().val);
+        }
+    }
+}
+
+PREORDER
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer>  result = new LinkedList<>();
+        if(root==null)
+            return result;
+        
+        traversal(root, result);
+        return result;
+    }
+
+    public void traversal(TreeNode root, List<Integer> result){
+        Stack<TreeNode> stack = new Stack();
+        stack.push(root);
+
+        while(!stack.isEmpty()){
+            TreeNode node = stack.pop();
+            if(node!=null){
+                result.add(node.val);
+                stack.push(node.right);
+                stack.push(node.left);
+            }
+        }
+    }
+}
+
+BFS
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        if(root == null){
+            return new LinkedList<>();
+        }
+        List<List<Integer>> result = new LinkedList<>();
+        tranverse(root, result);
+        return result;
+    }
+
+     private void tranverse(TreeNode root, List<List<Integer>> result){
+        Queue<TreeNode> queue = new LinkedList<>();
+
+        queue.offer(root);
+
+        int level = 1;
+        int maxSize = 1;
+        int nullCount = 0;
+        int nextNullCount = 0;
+
+        List<Integer> currentList = new LinkedList<>();
+        if(root == null){
+            new LinkedList<>();
+        }
+        
+        while(!queue.isEmpty()){
+            TreeNode node = queue.poll();
+
+            if(node.left != null){
+                queue.offer(node.left);
+            }
+            else{
+                nextNullCount++;
+            }
+
+            if(node.right != null){ queue.offer(node.right);}
+            else{ nextNullCount++; }
+
+            currentList.add(node.val);
+            if(currentList.size() + nullCount == maxSize){
+                maxSize = maxSize *2;
+                nullCount = nextNullCount;
+                nextNullCount = nextNullCount *2;
+                result.add(currentList);
+                currentList = new LinkedList<>();
+
+            }
+        }
+
+    }
+}
