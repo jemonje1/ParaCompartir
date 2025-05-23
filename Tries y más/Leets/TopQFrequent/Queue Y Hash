@@ -1,0 +1,56 @@
+//QUEUE PRIORITY DE STRINGS (MEJOR RUNTIME)
+class Solution {
+    public List<String> topKFrequent(String[] words, int k) {
+        HashMap<String, Integer> map = new HashMap<>();
+
+        for (String word : words) {
+            map.put(word, map.getOrDefault(word, 0) + 1);
+        }
+        PriorityQueue<String> pq = new PriorityQueue<>((a, b) -> {
+            int freqA = map.get(a);
+            int freqB = map.get(b);
+            if (freqA == freqB) {
+                return a.compareTo(b);
+            } else {
+                return freqB - freqA;
+            }
+        });
+        pq.addAll(map.keySet());
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < k && !pq.isEmpty(); i++) {
+            result.add(pq.poll());
+        }
+
+        return result;
+    }
+}
+
+//QUEUE DE INTEGER SEGÚN FRECUENCIA
+class Solution {
+    public List<String> topKFrequent(String[] words, int k) {
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String word : words) {
+            map.put(word, map.getOrDefault(word, 0) + 1);
+        }
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+        pq.addAll(map.values());
+        List<String> result = new ArrayList<>();
+        HashSet<String> used = new HashSet<>();
+        while (result.size() < k && !pq.isEmpty()) {
+            int freq = pq.poll();
+            List<String> candidates = new ArrayList<>();
+            for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                if (entry.getValue() == freq && !used.contains(entry.getKey())) {
+                    candidates.add(entry.getKey());
+                }
+            }
+            Collections.sort(candidates);
+            for (String word : candidates) {
+                if (result.size() == k) break;
+                result.add(word);
+                used.add(word);
+            }
+        }
+        return result;
+    }
+}
