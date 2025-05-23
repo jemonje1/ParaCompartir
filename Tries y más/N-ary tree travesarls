@@ -1,0 +1,128 @@
+//PREORDER
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+
+class Solution {
+    public List<Integer> preorder(Node root) {
+        return preorder(root,new ArrayList<>());
+    }
+
+    private List <Integer> preorder (Node root, List<Integer> results){
+        if (root==null)
+            return results;
+
+        results.add(root.val);
+
+        for(Node child:root.children){
+            preorder(child, results);
+        }
+
+        return results;
+    }
+}
+
+//POSTORDER
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+}
+*/
+
+class Solution {
+    public List<Integer> postorder(Node root) {
+        return postorder(root,new ArrayList<>());
+    }
+
+    private List <Integer> postorder (Node root, List<Integer> results){
+        if (root==null)
+            return results;
+
+
+        for(Node child:root.children){
+            postorder(child, results);
+        }
+
+        results.add(root.val);
+
+        return results;
+    }
+}
+
+
+//LEVELORDER
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+
+class Solution {
+    public List<List<Integer>> levelOrder(Node root) {
+        if(root==null)
+            return List.of();
+        
+        List<List<Integer>> results = new ArrayList<>();
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while(!queue.isEmpty()){
+
+            int size = queue.size();
+            List<Integer> level = new LinkedList<>();
+
+            for(int i=0;i<size;i++){
+                Node current = queue.poll();
+                level.add(current.val);
+
+                queue.addAll(current.children);
+            }
+
+            results.add(level);
+        }
+
+        return results;
+    }
+}
