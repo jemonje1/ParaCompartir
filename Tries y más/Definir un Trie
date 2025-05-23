@@ -1,0 +1,103 @@
+//Trie Class y definición
+class Trie {
+    private Node root;
+    public Trie() {
+        root = new Node();
+    }
+    
+    public void insert(String word) {
+        Node current = root;
+        for(char c:word.toCharArray()){
+            if(current.children[c-'a']==null){
+                current.children[c-'a'] = new Node();
+            }
+            current = current.children[c-'a'];
+        }
+        current.isLast=true;
+    }
+    
+    public boolean search(String word) {
+        Node current = root;
+        for(char c:word.toCharArray()){
+            if(current.children[c-'a']==null){
+                return false;
+            }
+            current = current.children[c-'a'];
+        }
+        return current.isLast;
+    }
+    
+    public boolean startsWith(String prefix) {
+        Node current = root;
+        for(char c:prefix.toCharArray()){
+            if(current.children[c-'a']==null)
+                return false;
+
+            current=current.children[c-'a'];
+        }
+        return true;
+    }
+
+    private static class Node{
+        public Node[] children;
+        public boolean isLast;
+        public Node(){
+            children = new Node[26];
+            isLast=false;
+        }
+    }
+}
+//EJEMPLO DE UN LEETCODE WORDICTIONARY
+class WordDictionary {
+    private Node root;
+
+    public WordDictionary() {
+        root=new Node();
+    }
+    
+    public void addWord(String word) {
+        Node current = root;
+        for(char c:word.toCharArray()){
+            if(current.children[c-'a']==null)
+                current.children[c-'a']=new Node();
+            current = current.children[c-'a'];
+        }
+        current.isLast=true;
+    }
+    
+
+    public boolean search(String word) {
+        return search(root, word, 0);
+    }
+
+    private boolean search(Node root, String word, int i){
+        if(i>=word.length())
+            return root.isLast;
+        
+        if(word.charAt(i)=='.'){
+            for(Node child:root.children){
+                if(child !=null && search(child, word, i+1))
+                    return true;
+            }
+            return false;
+        }
+
+        Node node = root.children[word.charAt(i)-'a'];
+
+        if(node==null)
+            return false;
+        
+        return search(node,word,i+1);
+        
+    }
+
+    private class Node{
+        public Node[] children;
+        public boolean isLast;
+
+        public Node(){
+            this.children=new Node[26];
+            this.isLast=false;
+        }
+    }
+}
