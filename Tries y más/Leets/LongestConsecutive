@@ -1,0 +1,28 @@
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)->a-b);
+        HashSet<Integer> map = new HashSet<>();
+        if(nums.length==0)
+            return 0;
+            
+        for(int n:nums){
+            map.add(n);
+        }
+        int size = 0;
+        pq.addAll(map);
+        int longest = 1;
+        int currentStreak = 1;
+        int prev = pq.poll();
+        while (!pq.isEmpty()) {
+            int curr = pq.poll();
+            if (curr == prev + 1) {
+                currentStreak++;
+            } else {
+                currentStreak = 1;
+            }
+            longest = Math.max(longest, currentStreak);
+            prev = curr;
+        }
+        return longest;
+    }
+}
