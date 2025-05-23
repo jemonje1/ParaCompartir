@@ -1,0 +1,84 @@
+class Solution {
+    public List<String> topKFrequent(String[] words, int k) {
+        Trie trie = new Trie();
+        HashMap<String, Integer> freqMap = new HashMap<>();
+        for (String word : words) {
+            trie.insert(word);
+            freqMap.put(word, freqMap.getOrDefault(word, 0) + 1);
+        }
+        List<String> allWords = new ArrayList<>();
+        dfs(trie.root, new StringBuilder(), allWords);
+        Collections.sort(allWords, (a, b) -> {
+            int freqA = freqMap.get(a);
+            int freqB = freqMap.get(b);
+            if (freqA == freqB) {
+                return a.compareTo(b);
+            }
+            return freqB - freqA;
+        });
+        return allWords.subList(0, k);
+    }
+    private void dfs(Trie.Node node, StringBuilder path, List<String> words) {
+        if (node == null) return;
+        if (node.isLast) {
+            words.add(path.toString());
+        }
+        for (char c = 'a'; c <= 'z'; c++) {
+            Trie.Node next = node.children[c - 'a'];
+            if (next != null) {
+                path.append(c);
+                dfs(next, path, words);
+                path.deleteCharAt(path.length() - 1);
+            }
+        }
+    }
+}
+
+class Trie {
+    public Node root;
+
+    public Trie() {
+        root = new Node();
+    }
+
+    public void insert(String word) {
+        Node current = root;
+        for (char c : word.toCharArray()) {
+            if (current.children[c - 'a'] == null) {
+                current.children[c - 'a'] = new Node();
+            }
+            current = current.children[c - 'a'];
+        }
+        current.isLast = true;
+    }
+
+    public boolean search(String word) {
+        Node current = root;
+        for (char c : word.toCharArray()) {
+            if (current.children[c - 'a'] == null) {
+                return false;
+            }
+            current = current.children[c - 'a'];
+        }
+        return current.isLast;
+    }
+
+    public boolean startsWith(String prefix) {
+        Node current = root;
+        for (char c : prefix.toCharArray()) {
+            if (current.children[c - 'a'] == null)
+                return false;
+            current = current.children[c - 'a'];
+        }
+        return true;
+    }
+
+    public static class Node {
+        public Node[] children;
+        public boolean isLast;
+        public Node() {
+            children = new Node[26];
+            isLast = false;
+        }
+    }
+}
