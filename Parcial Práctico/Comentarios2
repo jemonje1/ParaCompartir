@@ -1,0 +1,83 @@
+#PARA ESCRITORIO
+#import os
+#escritorio = r"C:\Users\AQUI PONGAN SU USUARIO\OneDrive\Desktop"
+
+#nombre = input("Ingresar nombre completo: ")
+#carne = input("Ingresar carné: ")
+#carrera = input("Carrera: ")
+#correoElectronico = input("Correo electrónico: ")
+#ruta = os.path.join(escritorio, carne + ".txt")
+
+#with open(ruta, "w", encoding="utf-8") as archivo:
+ #   archivo.write("Tarea | Manejo e implementación de archivos\n")
+  #  archivo.write("=" * 45 + "\n")
+   # archivo.write("Nombre completo: " + nombre + "\n")
+    #archivo.write("Carné: " + carne + "\n")
+    #archivo.write("Carrera: " + carrera + "\n")
+    #archivo.write("Correo electrónico: " + correoElectronico + "\n")
+
+#print(f"Archivo {carne}.txt guardado exitosamente en el Escritorio")
+
+#Guarda en documentos
+#import os
+
+#documentos = r"C:\Users\javu2\OneDrive\Documentos\Tareas Landivar\4to Semestre\Manejo e implementación de archivos\Ejercicio Python 2 - Javier Monje"
+
+
+#def abrirArchivo():
+ #   ruta = os.path.join(documentos, "practica2.txt")
+  #  with open(ruta, "w", encoding="utf-8") as archivo:
+   #     archivo.write("Actividad práctica de la universidad.")
+        
+#def leerArchivo():
+ #   ruta = os.path.join(documentos,"practica2.txt")
+  #  with open(ruta,"r",encoding="utf-8") as archivo:
+   #     leer = archivo.readlines()
+    
+    #for linea in leer:
+     #   print(linea)
+
+
+#abrirArchivo()
+#leerArchivo()
+
+#FRUTAS
+#import os
+# Función para contar los caracteres de un archivo
+#def contar_caracteres(ruta): 
+ #   try:
+  #      with open(ruta, 'r', encoding='utf-8') as archivo:
+   #         contenido = archivo.read()
+    #        return len(contenido)
+    #except FileNotFoundError:
+     #   print("El archivo no fue encontrado.")
+      #  return None
+    #except Exception as e:
+     ##  return None
+# Parte principal del programa
+#escritorio = os.path.join(os.path.expanduser("~"), "Desktop")
+#ruta = os.path.join(escritorio, "frutas.txt")
+#f1 = input("¿Primera fruta?: ")
+#f2 = input("¿Segunda fruta?: ")
+#f3 = input("¿Tercera fruta?: ")
+#f4 = input("¿Cuarta fruta?: ")
+#with open(ruta, "w", encoding='utf-8') as archivo:
+ #   archivo.write("----- Listado de frutas -----\n")
+  #  archivo.write("Fruta 1: " + f1 + "\n")
+   # archivo.write("Fruta 2: " + f2 + "\n")
+    #archivo.write("Fruta 3: " + f3 + "\n")
+    #archivo.write("Fruta 4: " + f4 + "\n")
+#print("El archivo fue creado exitosamente en el escritorio.")
+# Llamada a la función
+#total_caracteres = contar_caracteres(ruta)
+#if total_caracteres is not None:
+ #   print(f"El archivo tiene {total_caracteres} caracteres.")
+ 
+#vocales = "aeiouAEIOU"
+#with open(ruta,"r") as archivo:
+#	for linea in archivo:
+#		linea = linea.strip()
+#		if linea.startswith("Fruta") and ":" in linea:
+#			nombre_fruta = linea.split(": ")[1]
+#			if nombre_fruta and nombre_fruta[0] in vocales:
+#				print(f"la fruta tiene vocal: {nombre_fruta}")

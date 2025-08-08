@@ -1,0 +1,43 @@
+#Para JSON
+#import json
+
+# Solicitar datos
+#nombre = input("Nombre completo: ")
+#edad = input("Edad: ")
+#correo = input("Correo electrónico: ")
+
+# Crear un diccionario con los datos
+#datos = {
+   # "Nombre": nombre,
+  #  "Edad": edad,
+    #"Correo": correo
+#}
+
+# Crear archivo JSON
+#with open("mi_datos.json", "w") as archivo:
+    #json.dump(datos, archivo, indent=4)
+
+#print("Archivo JSON creado con éxito.")
+
+
+
+
+#//Para  CSV
+#//import csv
+
+# Solicitar datos
+#nombre = input("Nombre completo: ")
+#edad = input("Edad: ")
+#correo = input("Correo electrónico: ")
+
+# Crear archivo CSV
+#with open("mi_datos.csv", "w", newline="") as archivo:
+   # escritor = csv.writer(archivo)
+  #  escritor.writerow(["Nombre", "Edad", "Correo"])  # Encabezados
+ #   escritor.writerow([nombre, edad, correo])        # Datos
+
+#print("Archivo CSV creado con éxito.")
+
+
+#(Lo guarda en la misma carpeta)
+
